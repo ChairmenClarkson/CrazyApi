@@ -3,36 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mock API</title>
-    <script>
-        function getPosts() {
-            return JSON.parse(localStorage.getItem('posts') || '[]');
-        }
-
-        function savePost(post) {
-            const posts = getPosts();
-            posts.push(post);
-            localStorage.setItem('posts', JSON.stringify(posts));
-        }
-
-        function handleRequest(req) {
-            if (req.method === 'GET') {
-                return new Response(JSON.stringify(getPosts()), { status: 200 });
-            } else if (req.method === 'POST') {
-                req.json().then(post => {
-                    savePost(post);
-                    new Response(JSON.stringify(post), { status: 201 });
-                });
-            }
-        }
-
-        self.addEventListener('fetch', event => {
-            event.respondWith(handleRequest(event.request));
-        });
-    </script>
+    <title>API Data</title>
 </head>
 <body>
-    <h1>Mock API</h1>
-    <p>This is a mock API using localStorage.</p>
+    <script>
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                document.body.textContent = JSON.stringify(data);
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
 </body>
 </html>
