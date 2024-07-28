@@ -1,18 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>GitHub Pages API</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock API</title>
+    <script>
+        function getPosts() {
+            return JSON.parse(localStorage.getItem('posts') || '[]');
+        }
+
+        function savePost(post) {
+            const posts = getPosts();
+            posts.push(post);
+            localStorage.setItem('posts', JSON.stringify(posts));
+        }
+
+        function handleRequest(req) {
+            if (req.method === 'GET') {
+                return new Response(JSON.stringify(getPosts()), { status: 200 });
+            } else if (req.method === 'POST') {
+                req.json().then(post => {
+                    savePost(post);
+                    new Response(JSON.stringify(post), { status: 201 });
+                });
+            }
+        }
+
+        self.addEventListener('fetch', event => {
+            event.respondWith(handleRequest(event.request));
+        });
+    </script>
 </head>
 <body>
-  <script>
-    const data = {
-      message: "Hello from GitHub Pages!",
-      posts: [
-        { id: 1, title: "Post 1", body: "Content of post 1" },
-        { id: 2, title: "Post 2", body: "Content of post 2" }
-      ]
-    };
-    document.body.innerHTML = JSON.stringify(data);
-  </script>
+    <h1>Mock API</h1>
+    <p>This is a mock API using localStorage.</p>
 </body>
 </html>
