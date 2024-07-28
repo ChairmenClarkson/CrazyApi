@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GitHub Pages API</title>
+</head>
+<body>
+  <script>
+    const data = {
+      message: "Hello from GitHub Pages!",
+      posts: [
+        { id: 1, title: "Post 1", body: "Content of post 1" },
+        { id: 2, title: "Post 2", body: "Content of post 2" }
+      ]
+    };
+    document.body.innerHTML = JSON.stringify(data);
+  </script>
+</body>
+</html>
