@@ -29,6 +29,11 @@
             "id": "6",
             "name": "test32",
             "value": "wee"
+        },
+        {
+            "id": "7",
+            "name": "python",
+            "value": "import dwainesqol\\\\n\\\\ndwainesqol.msgbox(\\\"testing\\\", \\\"this is to test if can be done\\\",\\\"ICON_INFO\\\")"
         }
     ]
 }
