@@ -34,6 +34,11 @@
             "id": "7",
             "name": "python",
             "value": "import dwainesqol\\\\n\\\\ndwainesqol.msgbox(\\\"testing\\\", \\\"this is to test if can be done\\\",\\\"ICON_INFO\\\")"
+        },
+        {
+            "id": "5",
+            "name": "asdasd",
+            "value": "import dwainesqol\\\\n\\\\ndwainesqol.msgbox(\\\"testing\\\", \\\"this is to test ifcan be done\\\",\\\"ICON_INFO\\\")"
         }
     ]
 }
